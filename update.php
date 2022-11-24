@@ -2,7 +2,7 @@
 set_time_limit(0);
 require_once "zip.php";
 define('UPDATER_PATH', str_replace('\\','/',dirname(__FILE__)).'/');
-print UPDATER_PATH;
+//print UPDATER_PATH;
 //exit();
 $url = "https://github.com/kinoppol/ppm/archive/refs/heads/main.zip";
 $zip_file = UPDATER_PATH."/update/ppm.zip";
@@ -37,7 +37,10 @@ if($zip->open($zip_file) != "true")
 {
  echo "Error :- Unable to open the Zip File";
  exit();
-} 
+}else{
+    print "Update successfully please wait.";
+    print '<meta http-equiv="refresh" content="2;./">';
+}
 
 $zip->extractSubdirTo($extractPath,'ppm-main/');
 $zip->close();
