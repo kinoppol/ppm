@@ -9,7 +9,7 @@ if(!$db){
     print "Can't connect db";
     exit();
 }
-$db-> set_charset("utf8");
+$db-> set_charset("utf8mb4");
 
 function pq($str,$force=false){
     if((is_numeric($str)||empty($str))&&!$force) return $str;
