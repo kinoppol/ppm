@@ -75,6 +75,7 @@
 			exit();
 		}
 	}else {
+		print $qry;
 		die("Query failed");
 	}
 ?>
