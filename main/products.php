@@ -316,6 +316,10 @@ return false;
 });
 
 });
+
+	$(function(){
+		$("#filter").focus();
+	});
 </script>
 </body>
 <?php include('footer.php');?>
