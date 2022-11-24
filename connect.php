@@ -1,9 +1,5 @@
 <?php
-/* Database config */
-$db_host		= 'localhost';
-$db_user		= 'root';
-$db_pass		= '';
-$db_database	= 'sales'; 
+require_once('main/config/setup.php');
 
 /* End config */
 
