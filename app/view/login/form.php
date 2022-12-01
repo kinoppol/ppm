@@ -1,7 +1,9 @@
 <div class="login-content">
                 <div class="login-logo">
                     <a href="index.html">
-                        <img class="align-content" src="<?php print site_url('template/sufee-admin/',true); ?>images/logo.png" alt="">
+                        <h3 style="color:white">PPM</h3>
+                        <!-- <img class="align-content" src="<?php print site_url('template/sufee-admin/',true); ?>images/logo.png" alt="">
+-->
                     </a>
                 </div>
                 <div class="login-form">
