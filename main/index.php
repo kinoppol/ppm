@@ -1,3 +1,6 @@
+<?php
+$systemFoot='';
+?>
 <!DOCTYPE html>
 <html>
 <head>

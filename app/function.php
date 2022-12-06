@@ -37,3 +37,19 @@ function model($file){
     $obj=new $file($db);
     return $obj;
 }
+
+function systemFoot($str=''){
+    global $systemFoot;
+    $systemFoot.=$str;
+    return $systemFoot;
+}
+
+function gen_option($arr=array(),$def=''){
+    $ret='';
+    foreach($arr as $k=>$v){
+        $selected='';
+        if($def==$k)$selected=' selected';
+        $ret.='<option value="'.$k.'"'.$selected.'>'.$v.'</option>';
+    }
+    return $ret;
+}

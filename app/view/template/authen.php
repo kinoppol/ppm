@@ -1,4 +1,3 @@
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -48,7 +47,9 @@
     <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?php print site_url('template/sufee-admin/',true); ?>assets/js/main.js"></script>
-
+    <?php
+        print systemFoot();
+    ?>
 
 </body>
 

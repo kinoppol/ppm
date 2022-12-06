@@ -203,7 +203,8 @@ Sales Report from&nbsp;<?php echo $_GET['d1'] ?>&nbsp;to&nbsp;<?php echo $_GET['
 			<td>STI-00<?php echo $row['transaction_id']; ?></td>
 			<td><?php echo $row['date']; ?></td>
 			<td><?php echo $row['name']; ?></td>
-			<td><a href="preview.php?invoice=<?php echo $row['invoice_number']; ?>"><?php echo $row['invoice_number']; ?></a></td>
+			<td><a href="preview.php?invoice=<?php echo $row['invoice_number']; ?>"><?php echo $row['invoice_number']; ?></a>
+			<a href="sale_slips.php?invoice=<?php echo $row['invoice_number']; ?>">[P]</a></td>
 			<td><?php
 			$dsdsd=$row['amount'];
 			echo formatMoney($dsdsd, true);
