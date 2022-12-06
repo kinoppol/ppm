@@ -44,6 +44,10 @@ function systemFoot($str=''){
     return $systemFoot;
 }
 
+function helper($file){
+    require_once('helper/'.$file.'.php');
+}
+
 function gen_option($arr=array(),$def=''){
     $ret='';
     foreach($arr as $k=>$v){
