@@ -12,6 +12,4 @@ class barcode{
         $data['content']=$_GET['q'];
         return view('template/main',$data);
     }
-    function daily_report(){
-    }
 }
