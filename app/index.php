@@ -22,7 +22,8 @@ error_reporting(E_ALL);
                                  );
     
     if(!is_numeric(array_search($c,$controller_guest_allowed))){
-        print redirect(site_url('login'));
+        print "Restrict access.";
+        print redirect(site_url('login',2));
         exit();
     }
 
