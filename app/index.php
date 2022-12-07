@@ -22,7 +22,8 @@ error_reporting(E_ALL);
                                  );
     
     if(!is_numeric(array_search($c,$controller_guest_allowed))){
-        redirect(site_url('login/form'));
+        print redirect(site_url('login/form'));
+        exit();
     }
 
     $inc_file='controller/'.$c.'.php';
