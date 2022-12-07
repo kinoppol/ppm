@@ -34,7 +34,7 @@ function arr2and($data=array()){
 
 function model($file){
     global $db;
-    require('model/'.$file.'.php');
+    require_once('model/'.$file.'.php');
     $obj=new $file($db);
     return $obj;
 }
