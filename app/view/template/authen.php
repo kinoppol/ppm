@@ -47,10 +47,11 @@
     <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?php print site_url('template/sufee-admin/',true); ?>assets/js/main.js"></script>
+    
+
+</body>
     <?php
         print systemFoot();
     ?>
-
-</body>
 
 </html>

@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="<?php print site_url('template/sufee-admin/',true); ?>vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="<?php print site_url('template/sufee-admin/',true); ?>vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="<?php print site_url('template/sufee-admin/',true); ?>vendors/selectFX/css/cs-skin-elastic.css">
+    
+    <link rel="stylesheet" href="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
 
     <link rel="stylesheet" href="<?php print site_url('template/sufee-admin/',true); ?>assets/css/style.css">
 
@@ -253,6 +256,18 @@ if(empty($_COOKIE['menu_display'])||$_COOKIE['menu_display']=='expand'){
 
                             <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
                             <script src="<?php print site_url('template/sufee-admin/',true); ?>assets/js/main.js"></script>
+                            
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+                            
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/jszip/dist/jszip.min.js"></script>
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/pdfmake/build/pdfmake.min.js"></script>
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/pdfmake/build/vfs_fonts.js"></script>
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+                            <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
 </body>
 <script>
     function toggleMenu(){
@@ -261,4 +276,7 @@ if(empty($_COOKIE['menu_display'])||$_COOKIE['menu_display']=='expand'){
         });
     }
 </script>
+    <?php
+        print systemFoot();
+    ?>
 </html>
