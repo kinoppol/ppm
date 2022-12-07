@@ -21,7 +21,7 @@ error_reporting(E_ALL);
                                     'register'
                                  );
     
-    if(!is_numeric(array_search($c,$controller_guest_allowed))){
+    if(empty($_SESSION['user'])&&!is_numeric(array_search($c,$controller_guest_allowed))){
         print "Restrict access.";
         print redirect(site_url('login'),2);
         exit();
