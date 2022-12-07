@@ -4,6 +4,6 @@ class barcode{
     }
     function search(){
         $data['content']=$_GET['q'];
-        return view('template/authen',$data);
+        return view('template/main',$data);
     }
 }
