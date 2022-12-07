@@ -22,7 +22,7 @@ error_reporting(E_ALL);
                                  );
     
     if(!is_numeric(array_search($c,$controller_guest_allowed))){
-        print redirect(site_url('login/form'));
+        print redirect(site_url('login'));
         exit();
     }
 
