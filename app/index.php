@@ -17,6 +17,14 @@ error_reporting(E_ALL);
         $c='login';
     }
 
+    $controller_guest_allowed=array('login',
+                                    'register'
+                                 );
+    
+    if(!is_numeric(array_search($c,$controller_guest_allowed))){
+        redirect(site_url('login/form'));
+    }
+
     $inc_file='controller/'.$c.'.php';
     
     require_once($inc_file);
