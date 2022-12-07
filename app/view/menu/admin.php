@@ -4,12 +4,12 @@ $menu['จัดการระบบ']=array(
     'user'=>array(
         'label'=>'จัดการผู้ใช้',
         'bullet'=>'ti ti-user',
-        'url'=>site_url('sale'),
+        'url'=>site_url('user/list'),
         'item'=>array(),
     ),
     'config'=>array(
         'label'=>'คั้งค่าการทำงาน',
-        'url'=>site_url('admin/config'),
+        'url'=>site_url('config'),
         'bullet'=>'ti ti-settings',
         'item'=>array(
             'store'=>array(

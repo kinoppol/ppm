@@ -9,8 +9,9 @@ function view($file,$arr=array()){
     return $res;
 }
 
-function site_url($uri,$direclink=false){
+function site_url($uri='',$direclink=false){
     global $site_url;
+    if(empty($uri))return $site_url;
     if(!$direclink){
         return $site_url.'app/?p='.$uri;
     }else{

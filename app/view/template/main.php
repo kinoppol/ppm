@@ -31,8 +31,15 @@
 
 
 </head>
+<?php
+if(empty($_COOKIE['menu_display'])||$_COOKIE['menu_display']=='expand'){
+    $body_calss='';
+}else if($_COOKIE['menu_display']=='collapse'){
+    $body_calss=' open';
+}
 
-<body>
+?>
+<body class="<?php print $body_calss; ?>">
     <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
@@ -74,7 +81,7 @@
 
             <div class="header-menu">
                 <div class="col-sm-7">
-                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <a id="menuToggle" class="menutoggle pull-left" onClick="toggleMenu()"><i class="fa fa-angle-double-left"></i></a>
                     <div class="header-left">
                         <!--
                         <button class="search-trigger"><i class="fa fa-search"></i></button>
@@ -247,4 +254,11 @@
                             <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
                             <script src="<?php print site_url('template/sufee-admin/',true); ?>assets/js/main.js"></script>
 </body>
+<script>
+    function toggleMenu(){
+        jQuery(document).ready(function(){
+            jQuery.ajax("<?php print site_url('setting/toggleMenu'); ?>");
+        });
+    }
+</script>
 </html>
