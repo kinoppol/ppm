@@ -1,4 +1,11 @@
+<?php
+$store=model('store');
+$stores=$store->get_store(array('id'=>$_SESSION['user']['store_id'],'status'=>'operated'));
+$data['title']=$stores[0]['name'];
+$data['store_name']=$stores[0]['name'];
+$data['sub_name']=$stores[0]['sub_name'];
 
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -52,8 +59,8 @@ if(empty($_COOKIE['menu_display'])||$_COOKIE['menu_display']=='expand'){
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="<?php print site_url('main'); ?>"><?php print $store_name; ?></a>
-                <a class="navbar-brand hidden" href="./"><?php print $sub_name; ?></a>
+                <a class="navbar-brand" href="<?php print site_url('main'); ?>"><?php print $data['store_name']; ?></a>
+                <a class="navbar-brand hidden" href="./"><?php print $data['sub_name']; ?></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
