@@ -10,7 +10,7 @@ class user{
         return $content;//view('template/authen',array('content'=>$content));
     }
 
-    function list(){
+    function view(){
 
         $data['content']='รายชื่อผู้ใช้';
         return view('template/main',$data);

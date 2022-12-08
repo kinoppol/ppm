@@ -4,7 +4,7 @@ $menu['จัดการระบบ']=array(
     'user'=>array(
         'label'=>'จัดการผู้ใช้',
         'bullet'=>'ti ti-user',
-        'url'=>site_url('user/list'),
+        'url'=>site_url('user/view'),
         'item'=>array(),
     ),
     'config'=>array(
