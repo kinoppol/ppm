@@ -1,5 +1,9 @@
 <?php
-
+/*
+function pq($str,$force_q=false){
+    if(!$force_q && (empty($str) || is_numeric($str))) return $str;
+    return "'".$str."'";
+}*/
 function view($file,$arr=array()){
     ob_start();
         extract($arr);
@@ -27,6 +31,14 @@ function arr2and($data=array()){
     $ret='';
     foreach($data as $k=>$v){
         if(!empty($ret))$ret.=' AND ';
+        $ret.=$k.'='.pq($v);
+    }
+    return $ret;
+}
+function arr2set($data=array()){
+    $ret='';
+    foreach($data as $k=>$v){
+        if(!empty($ret))$ret.=',';
         $ret.=$k.'='.pq($v);
     }
     return $ret;
