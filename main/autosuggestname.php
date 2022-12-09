@@ -1,5 +1,6 @@
 <?php
-   $db = new mysqli('localhost', 'root' ,'', 'sales');
+   
+include('../connect.php');
 	if(!$db) {
 	
 		echo 'Could not connect to the database.';
