@@ -16,7 +16,7 @@ $sql = "INSERT INTO sales (invoice_number,cashier,date,type,amount,profit,due_da
 $q = $db->query($sql);
 //$q->execute(array(':a'=>$a,':b'=>$b,':c'=>$c,':d'=>$d,':e'=>$e,':z'=>$z,':f'=>$f,':g'=>$cname));
 if($q){
-    header("location: preview.php?invoice=$a");
+    header("location: sale_slips.php?invoice=$a");
 }else{
     print $sql;
 }
@@ -28,7 +28,7 @@ $sql = "INSERT INTO sales (store_id,invoice_number,cashier,date,type,amount,prof
 $q = $db->query($sql);
 //$q->execute(array(':a'=>$a,':b'=>$b,':c'=>$c,':d'=>$d,':e'=>$e,':z'=>$z,':f'=>$f,':g'=>$cname));
 if($q){
-    header("location: preview.php?invoice=$a");
+    header("location: sale_slips.php?invoice=$a");
 }else{
     print $sql;
 }
