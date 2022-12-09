@@ -9,7 +9,7 @@ $e = pq($_POST['prod_name']);
 $f = pq($_POST['note']);
 $g = pq($_POST['date']);
 // query
-$sql = "INSERT INTO customer (customer_name,address,contact,membership_number,prod_name,note,expected_date) VALUES ($a,$b,$c,$d,$e,$f,$g)";
+$sql = "INSERT INTO customer (store_id,customer_name,address,contact,membership_number,prod_name,note,expected_date) VALUES (11$a,$b,$c,$d,$e,$f,$g)";
 $q = $db->query($sql);
 //print $sql;
 //$q->execute(array(':a'=>$a,':b'=>$b,':c'=>$c,':d'=>$d,':e'=>$e,':f'=>$f,':g'=>$g));

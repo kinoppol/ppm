@@ -5,7 +5,7 @@ class user{
 
     function logout(){
         unset($_SESSION['user']);
-        $content=redirect(site_url(''),2);
+        $content=redirect(site_url('login'),2);
         $content.='กรุณารอสักครู่..';
         return $content;//view('template/authen',array('content'=>$content));
     }

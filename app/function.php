@@ -70,3 +70,8 @@ function gen_option($arr=array(),$def=''){
     }
     return $ret;
 }
+/*
+function set_val($val=false,$def=''){
+    if($val) return $val;
+    else return $def;
+}*/

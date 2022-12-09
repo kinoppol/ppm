@@ -6,9 +6,10 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <strong class="card-title">สินค้า</strong>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product">
+                                <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product"> -->
+                                <a href="<?php print site_url('inventory/form_product'); ?>" class="btn btn-success">
                                     <i class="fa fa-plus"></i> เพิ่มข้อมูลสินค้า
-                                </button>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">

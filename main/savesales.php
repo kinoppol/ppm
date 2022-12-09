@@ -24,7 +24,7 @@ exit();
 }
 if($d=='cash') {
 $f = $_POST['cash'];
-$sql = "INSERT INTO sales (invoice_number,cashier,date,type,amount,profit,due_date,name) VALUES ($aq,$b,$c,$dq,$e,$z,$f,$cname)";
+$sql = "INSERT INTO sales (store_id,invoice_number,cashier,date,type,amount,profit,due_date,name) VALUES (1,$aq,$b,$c,$dq,$e,$z,$f,$cname)";
 $q = $db->query($sql);
 //$q->execute(array(':a'=>$a,':b'=>$b,':c'=>$c,':d'=>$d,':e'=>$e,':z'=>$z,':f'=>$f,':g'=>$cname));
 if($q){

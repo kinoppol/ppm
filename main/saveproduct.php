@@ -13,7 +13,7 @@ $i = pq($_POST['gen']);
 $j = pq($_POST['date_arrival']);
 $k = pq($_POST['qty_sold']);
 // query
-$sql = "INSERT INTO products (product_code,product_name,expiry_date,price,supplier,qty,o_price,profit,gen_name,date_arrival,qty_sold) VALUES ($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k)";
+$sql = "INSERT INTO products (store_id,product_code,product_name,expiry_date,price,supplier,qty,o_price,profit,gen_name,date_arrival,qty_sold) VALUES (1,$a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k)";
 $q = $db->query($sql);
 //print $sql;
 //$q->execute(array(':a'=>$a,':b'=>$b,':c'=>$c,':d'=>$d,':e'=>$e,':f'=>$f,':g'=>$g,':h'=>$h,':i'=>$i,':j'=>$j,':k'=>$k));

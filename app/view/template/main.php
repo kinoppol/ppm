@@ -37,7 +37,7 @@ $data['sub_name']=$stores[0]['sub_name'];
     <link rel="stylesheet" href="<?php print site_url('template/sufee-admin/',true); ?>assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+    <link href="<?php print site_url('js/select2/dist/css/select2.css',true); ?>">
 
 
 </head>
@@ -275,6 +275,7 @@ if(empty($_COOKIE['menu_display'])||$_COOKIE['menu_display']=='expand'){
                             <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
                             <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
                             <script src="<?php print site_url('template/sufee-admin/',true); ?>vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+                            <script src="<?php print site_url('',true); ?>js/select2/dist/js/select2.js"></script>
 </body>
 <script>
     function toggleMenu(){

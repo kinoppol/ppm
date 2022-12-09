@@ -16,6 +16,19 @@ class inventory{
         $data['content']=view('product/list',array('products'=>$products));
         return view('template/main',$data);
     }
+    function form_product(){
+        $result=array();
+        if(!empty($_GET['product_id'])){
+            $product=model('product');
+            $product_data=array('product_id'=>$_GET['product_id'],'store_id'=>$_SESSION['user']['store_id']);
+            $result=$product->get_product($product_data);
+            $result=$result[0];
+        }
+        $result['action']=site_url('inventory/add_product');
+        $data=array();
+        $data['content']=view('product/form_product',$result);
+        return view('template/main',$data);
+    }
     function add_product(){
         $product_data=array(
             'store_id'=>$_SESSION['user']['store_id'],

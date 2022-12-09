@@ -7,7 +7,7 @@ $c = pq($_POST['contact'],true);
 $d = pq($_POST['cperson']);
 $e = pq($_POST['note'],true);
 // query
-$sql = "INSERT INTO supliers (suplier_name,suplier_address,suplier_contact,contact_person,note) VALUES ($a,$b,$c,$d,$e)";
+$sql = "INSERT INTO supliers (store_id,suplier_name,suplier_address,suplier_contact,contact_person,note) VALUES (1,$a,$b,$c,$d,$e)";
 $q = $db->query($sql);
 //$q->execute(array(':a'=>$a,':b'=>$b,':c'=>$c,':d'=>$d,':e'=>$e));
 if($q){
