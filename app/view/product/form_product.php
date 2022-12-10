@@ -38,7 +38,7 @@ $input=array(
         'type'=>'date',
         'label'=>'วันที่ได้รับ',
         'required'=>true,
-        'def'=>empty($gen_name)?date('Y-m-d'):$gen_name,
+        'def'=>empty($arrival_date)?date('Y-m-d'):$arrival_date,
     ),
     array(
         'id'=>'expiry_date',
@@ -61,7 +61,7 @@ $input=array(
         'attr'=>array('min'=>0),
         'label'=>'ราคาขาย',
         'required'=>true,
-        'def'=>empty($o_price)?'0':$o_price,
+        'def'=>empty($price)?'0':$price,
     ),
     array(
         'id'=>'show_profit',
@@ -77,7 +77,7 @@ $input=array(
         'attr'=>array('min'=>1),
         'label'=>'จำนวนที่มี/ที่ได้รับ',
         'required'=>true,
-        'def'=>empty($o_price)?'1':$o_price,
+        'def'=>empty($qty)?'1':$qty,
     ),
     array(
         'id'=>'btn',
@@ -90,6 +90,11 @@ $input=array(
         'id'=>'profit',
         'type'=>'hidden',
         'def'=>empty($profit)?0:$profit,
+    ),
+    array(
+        'id'=>'product_id',
+        'type'=>'hidden',
+        'def'=>empty($product_id)?0:$product_id,
     )
 );
 

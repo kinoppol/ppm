@@ -23,8 +23,10 @@ class inventory{
             $product_data=array('product_id'=>$_GET['product_id'],'store_id'=>$_SESSION['user']['store_id']);
             $result=$product->get_product($product_data);
             $result=$result[0];
+            $result['action']=site_url('inventory/update_product');
+        }else{
+            $result['action']=site_url('inventory/add_product');
         }
-        $result['action']=site_url('inventory/add_product');
         $data=array();
         $data['content']=view('product/form_product',$result);
         return view('template/main',$data);
@@ -46,6 +48,31 @@ class inventory{
 
         $product=model('product');
         $result=$product->add_product($product_data);
+        $data=array();
+        $data['content']=redirect(site_url('inventory/product'));
+        return view('template/authen',$data);
+    }
+    
+    function update_product(){
+        $where=array(
+            'product_id'=>$_POST['product_id'],
+        );
+        $product_data=array(
+            'store_id'=>$_SESSION['user']['store_id'],
+            'product_code'=>$_POST['barcode'],
+            'gen_name'=>$_POST['gen_name'],
+            'product_name'=>$_POST['product_name'],
+            'o_price'=>$_POST['o_price'],
+            'price'=>$_POST['price'],
+            'profit'=>$_POST['profit'],
+            'supplier'=>$_POST['supplier'],
+            'qty'=>$_POST['qty'],
+            'expiry_date'=>$_POST['expiry_date'],
+            'date_arrival'=>$_POST['date_arrival'],
+        );
+
+        $product=model('product');
+        $result=$product->update_product($product_data,$where);
         $data=array();
         $data['content']=redirect(site_url('inventory/product'));
         return view('template/authen',$data);

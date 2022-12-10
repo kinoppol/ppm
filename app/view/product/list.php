@@ -37,8 +37,9 @@
                                             <td><?php print $row['profit']; ?></td>
                                             <td><?php print $row['supplier']; ?></td>
                                             <td><?php print $row['qty']; ?></td>
-                                            <td><a href="#" class="btn btn-primary btn-sm"><i class="fa fa-search"></i></a>
-                                            <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></td>
+                                            <td>
+                                            <a href="<?php print site_url('inventory/form_product'); ?>&product_id=<?php print $row['product_id']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                            <a href="#" onClick="delProduct(<?php print $row['product_id'].',\''.$row['product_name'].'\''; ?>)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                         <?php
                                         }
@@ -172,5 +173,20 @@
 
          }
      });
+     function delProduct(pid,pname){
+      swal({
+        title: \"ยืนยันการลบข้อมูลสินค้า \\n\\\"\"+pname+\"\\\"\",
+        text: \"การดำเนินการนี้กู้คืนไม่ได้!\",
+        type: \"warning\",
+        showCancelButton: true,
+        cancelButtonText: \"ยกเลิก\",
+        confirmButtonColor: \"#DD6B55\",
+        confirmButtonText: \"ใช่, ลบข้อมูลสินค้า!\",
+        closeOnConfirm: false
+      },
+      function(){
+        swal(\"Deleted!\", \"Your imaginary file has been deleted.\", \"success\");
+      });
+     }
         </script>");
         ?>

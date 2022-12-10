@@ -34,7 +34,7 @@ function gen_input_text_like($input,$type='text'){
 }
 
 function gen_input_hidden($input){
-    $ret='<input type="hidden" name="'.$input['id'].'" value=value="'.(isset($input['def'])?$input['def']:'').'">';
+    $ret='<input type="hidden" name="'.$input['id'].'" id="'.$input['id'].'" value="'.(isset($input['def'])?$input['def']:'').'">';
     return $ret;
 }
 
