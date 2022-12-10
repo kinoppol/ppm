@@ -27,8 +27,9 @@ $input=array(
         'type'=>'select',
         'label'=>'ตัวแทนจำหน่าย',
         'item'=>array(
-            '1'=>'7-11',
-            '2'=>'big-c',
+            '1'=>'ไม่ระบุ',
+            '2'=>'7-11',
+            '3'=>'ฺBig-C',
         ),
         'required'=>true,
         'def'=>empty($supplier)?'':$supplier,
