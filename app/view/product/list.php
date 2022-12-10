@@ -141,6 +141,17 @@
                 }
        }
         });
+        //alert(555);
+        var table = jQuery('#bootstrap-data-table-export').DataTable();
+        jQuery('#bootstrap-data-table-export tbody').on('click', 'tr', function () {
+          if (jQuery(this).hasClass('selected')) {
+              //jQuery(this).removeClass('selected');
+          } else {
+              jQuery('tr.selected').removeClass('selected');
+              jQuery(this).addClass('selected');
+          }
+      });
+
         });
         jQuery(\"#product\").on('shown.bs.modal', function () {
             jQuery(\"#barcode\").focus();
@@ -185,6 +196,14 @@
         closeOnConfirm: false
       },
       function(){
+        jQuery.ajax(\"".site_url('inventory/delProduct')."&id=\"+pid);
+        var table=jQuery('#bootstrap-data-table-export').DataTable();
+        
+
+        var rows = table
+    .rows('.selected')
+    .remove()
+    .draw();
         swal(\"Deleted!\", \"Your imaginary file has been deleted.\", \"success\");
       });
      }

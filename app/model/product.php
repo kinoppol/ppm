@@ -29,4 +29,11 @@ class product{
             return $res;
         
     }
+    
+    function delete_product($where=array()){
+        $sql='delete from products where '.arr2and($where);
+        //print $sql;
+        $result=$this->db->query($sql);
+        return $result;        
+    }
 }

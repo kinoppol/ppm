@@ -77,4 +77,19 @@ class inventory{
         $data['content']=redirect(site_url('inventory/product'));
         return view('template/authen',$data);
     }
+    function delProduct(){
+        $where=array('product_id'=>$_GET['id'],'store_id'=>$_SESSION['user']['store_id']);
+        $product=model('product');
+        $result=$product->delete_product($where);
+        if($result){
+            return 'ok';
+        }else{
+            return 'error';
+        }
+    }
+
+    function shelf(){
+        $data['content']=555;
+        return view('template/main',$data);
+    }
 }
