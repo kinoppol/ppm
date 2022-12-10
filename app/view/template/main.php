@@ -37,7 +37,7 @@ $data['sub_name']=$stores[0]['sub_name'];
     <link rel="stylesheet" href="<?php print site_url('template/sufee-admin/',true); ?>assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <link href="<?php print site_url('js/select2/dist/css/select2.css',true); ?>">
+    <link rel="stylesheet" href="<?php print site_url('js/select2/dist/css/select2.css',true); ?>">
     <link rel="stylesheet" href="<?php print site_url('',true); ?>js/sweetalert/dist/sweetalert.css">
 
 

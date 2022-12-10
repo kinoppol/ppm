@@ -29,7 +29,7 @@ $input=array(
         'item'=>array(
             '1'=>'ไม่ระบุ',
             '2'=>'7-11',
-            '3'=>'ฺBig-C',
+            '3'=>'Big-C',
         ),
         'required'=>true,
         'def'=>empty($supplier)?'':$supplier,
