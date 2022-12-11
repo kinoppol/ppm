@@ -25,6 +25,9 @@ class inventory{
             $result=$result[0];
             $result['action']=site_url('inventory/update_product');
         }else{
+            if(!empty($_GET['product_code'])){
+                $result['product_code']=$_GET['product_code'];
+            }
             $result['action']=site_url('inventory/add_product');
         }
         $data=array();
