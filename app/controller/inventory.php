@@ -46,6 +46,19 @@ class inventory{
             'date_arrival'=>$_POST['date_arrival'],
         );
 
+        if(!empty($_FILES['picture'])){
+            helper('upload');
+            helper('image');
+            $store_id=$_SESSION['user']['store_id'];
+            $path_pic="./images/product/".$store_id."/".date('Y/m/');
+            $files=uploadtopath($_FILES['picture'],$path_pic);
+            $pics=array();
+            foreach($files as $f){
+                $pics[]=converttojpg($path_pic.$f,$del_org=true);
+            }
+            $product_data['picture']=json_encode($pics);
+        }
+
         $product=model('product');
         $result=$product->add_product($product_data);
         $data=array();
@@ -57,6 +70,14 @@ class inventory{
         $where=array(
             'product_id'=>$_POST['product_id'],
         );
+        
+        $product=model('product');
+        $old_data=$product->get_product(array('store_id'=>$_SESSION['user']['store_id'],'product_id'=>$_POST['product_id']));
+        
+        $pics=array();
+        if($old_data[0]['picture']!='NULL'){
+            $pics=json_decode($old_data[0]['picture'],true);
+        }
         $product_data=array(
             'store_id'=>$_SESSION['user']['store_id'],
             'product_code'=>$_POST['barcode'],
@@ -70,8 +91,18 @@ class inventory{
             'expiry_date'=>$_POST['expiry_date'],
             'date_arrival'=>$_POST['date_arrival'],
         );
+        if(!empty($_FILES['picture'])){
+            helper('upload');
+            helper('image');
+            $store_id=$_SESSION['user']['store_id'];
+            $path_pic="./images/product/".$store_id."/".date('Y/m/');
+            $files=uploadtopath($_FILES['picture'],$path_pic);
+            foreach($files as $f){
+                $pics[]=converttojpg($path_pic.$f,$del_org=true);
+            }
+            $product_data['picture']=json_encode($pics);
+        }
 
-        $product=model('product');
         $result=$product->update_product($product_data,$where);
         $data=array();
         $data['content']=redirect(site_url('inventory/product'));

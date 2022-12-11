@@ -8,6 +8,7 @@ function gen_input($arr=array()){
             case 'number'   : $form_input.=gen_input_text_like($row,'number'); break;   
             case 'date'     : $form_input.=gen_input_text_like($row,'date'); break;   
             case 'email'    : $form_input.=gen_input_text_like($row,'email'); break;   
+            case 'file'    : $form_input.=gen_input_text_like($row,'file'); break;   
             case 'hidden'   : $form_input.=gen_input_hidden($row); break;   
             case 'submit'   : $form_input.=gen_input_submit($row,empty($row['color'])?'primary':$row['color']); break;   
             case 'select'   : $form_input.=gen_input_select($row); break;   
@@ -24,9 +25,13 @@ function gen_input_text_like($input,$type='text'){
             $attr.=$k.'="'.$v.'"';
         }
     }
+    $class='form-control';
+    if($type=='file'){
+        $class='form-control-file';
+    }
     $ret='<div class="row form-group">
     <div class="col col-md-4"><label for="'.$input['id'].'" class=" form-control-label">'.$input['label'].'</label></div>   
-    <div class="col-12 col-md-8"><input type="'.$type.'" id="'.$input['id'].'" name="'.$input['id'].'" placeholder="'.(!empty($input['placeholder'])?$input['placeholder']:'').'" class="form-control" value="'.(isset($input['def'])?$input['def']:'').'" '.$attr.' '.(!empty($input['required'])?'required':'').'>'.(
+    <div class="col-12 col-md-8"><input type="'.$type.'" id="'.$input['id'].'" name="'.$input['id'].'" placeholder="'.(!empty($input['placeholder'])?$input['placeholder']:'').'" class="'.$class.'" value="'.(isset($input['def'])?$input['def']:'').'" '.$attr.' '.(!empty($input['required'])?'required':'').'>'.(
         !empty($input['hint'])?'<small class="form-text text-muted">'.$input['hint'].'</small>':''
     ).'</div>
     </div>';

@@ -23,6 +23,14 @@ $input=array(
         'def'=>empty($product_name)?'':$product_name,
     ),
     array(
+        'id'=>'picture[]',
+        'type'=>'file',
+        'label'=>'รูปสินค้า',
+        'attr'=>array('multiple'=>'','accept'=>'image/*'),
+        'required'=>false,
+        'def'=>NULL,
+    ),
+    array(
         'id'=>'supplier',
         'type'=>'select',
         'label'=>'ตัวแทนจำหน่าย',
@@ -99,7 +107,7 @@ $input=array(
     )
 );
 
-print '<form action="'.$action.'" method="post">';
+print '<form action="'.$action.'" method="post" enctype="multipart/form-data">';
 print '<div class="col-lg-10">
         <div class="card">
             <div class="card-header">
