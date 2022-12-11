@@ -9,10 +9,10 @@ class barcode{
         $pdata=$product->get_product($where);
         if(count($pdata)<1){
             $data['content']=view('product/form_product',array('product_code'=>$_GET['q']));
+            return view('template/main',$data);
         }else{
-            redirect(site_url('inventory/form_product/&product_id='.$pdata[0]['product_id']));
+            return redirect(site_url('inventory/form_product/&product_id='.$pdata[0]['product_id']));
             //$data['content']=view('product/form_product',array('product_id'=>$pdata[0]['product_id']));
         }
-        return view('template/main',$data);
     }
 }
