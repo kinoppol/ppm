@@ -98,7 +98,7 @@ class inventory{
             'date_arrival'=>$_POST['date_arrival'],
         );
         if(!empty($_FILES['picture']['name'])&&count($_FILES['picture']['name'])>0){
-            print_r($_FILES['picture']['name']);
+            print_r($_FILES['picture']);
             helper('upload');
             helper('image');
             $store_id=$_SESSION['user']['store_id'];
