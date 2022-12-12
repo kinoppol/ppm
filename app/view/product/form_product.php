@@ -147,6 +147,8 @@ systemFoot("<script>
        jQuery(this).val(jQuery(this).val()+'8');
       }else if(event.keyCode == 3605){
        jQuery(this).val(jQuery(this).val()+'9');
+      }else {
+        jQuery(this).val(jQuery(this).val()+event.keyCode;
       }
 
     }
