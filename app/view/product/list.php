@@ -30,11 +30,11 @@
                                         <?php
                                         foreach($products as $row){
                                           if($row['picture']==''){
-                                            $img_dsp='<img src="./images/no_pic.jpg" height="24">';
+                                            $img_dsp='<img src="./images/no_pic.jpg" height="64">';
                                           }else{
                                             $pics=json_decode($row['picture'],true);
                                             //print_r($pics);
-                                            $img_dsp='<img src="'.$pics[0].'" height="24">';
+                                            $img_dsp='<img src="'.$pics[0].'" height="64">';
                                           }
                                         ?>
                                         <tr>
