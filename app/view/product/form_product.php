@@ -148,7 +148,7 @@ systemFoot("<script>
       }else if(event.keyCode == 3605){
        jQuery(this).val(jQuery(this).val()+'9');
       }else {
-        jQuery(this).val(jQuery(this).val()+Convert.ToChar (event.keyCode));
+        jQuery(this).val(jQuery(this).val()+String.fromCharCode(event.keyCode));
       }
 
     }
