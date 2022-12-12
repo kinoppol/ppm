@@ -97,7 +97,7 @@ class inventory{
             'expiry_date'=>$_POST['expiry_date'],
             'date_arrival'=>$_POST['date_arrival'],
         );
-        if(!empty($_FILES['picture']['name'])&&$_FILES['picture']['name']!=''){
+        if(!empty($_FILES['picture']['name'])&&$_FILES['picture']['name'][0]!=''){
             print_r($_FILES['picture']);
             helper('upload');
             helper('image');
