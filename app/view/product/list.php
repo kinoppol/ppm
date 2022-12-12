@@ -29,10 +29,17 @@
                                     <tbody>
                                         <?php
                                         foreach($products as $row){
+                                          if($row['picture']==''){
+                                            $img_dsp='<img src="./images/no_pic.jpg" height="24">';
+                                          }else{
+                                            $pics=json_decode($row['picture'],true);
+                                            //print_r($pics);
+                                            $img_dsp='<img src="'.$pics[0].'">';
+                                          }
                                         ?>
                                         <tr>
                                             <td><?php print $row['gen_name']; ?></td>
-                                            <td><?php print $row['picture']; ?></td>
+                                            <td><?php print $img_dsp; ?></td>
                                             <td><?php print $row['product_code']; ?></td>
                                             <td><?php print $row['o_price']; ?></td>
                                             <td><?php print $row['price']; ?></td>
