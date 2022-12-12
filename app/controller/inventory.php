@@ -32,6 +32,9 @@ class inventory{
         }
         $data=array();
         $data['content']=view('product/form_product',$result);
+        if($result['picture']!='NULL'){
+            $data['content'].=view('product/gallery',array('pictures'=>json_decode($result['picture'],true)));
+        }
         return view('template/main',$data);
     }
     function add_product(){
