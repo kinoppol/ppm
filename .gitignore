@@ -1,4 +1,3 @@
 
 main/config/setup.php
-app/images/product/*.JPG
-*.JPG
+app/images/product/*.*
