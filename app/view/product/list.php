@@ -16,12 +16,13 @@
                                     <thead>
                                         <tr>
                                             <th>ชื่อสินค้า</th>
+                                            <th>รูป</th>
                                             <th>บาร์โค๊ด</th>
-                                            <th>ราคาซื้อ</th>
+                                            <th>ทุน</th>
                                             <th>ราคาขาย</th>
-                                            <th>กำไร/หน่วย</th>
-                                            <th>ตัวแทนจำหน่าย</th>
-                                            <th>จำนวนคงเหลือ</th>
+                                            <th>กำไร</th>
+                                            <th>ตัวแทน<br>จำหน่าย</th>
+                                            <th>จำนวน<br>คงเหลือ</th>
                                             <th>จัดการ</th>
                                         </tr>
                                     </thead>
@@ -31,6 +32,7 @@
                                         ?>
                                         <tr>
                                             <td><?php print $row['gen_name']; ?></td>
+                                            <td><?php print $row['picture']; ?></td>
                                             <td><?php print $row['product_code']; ?></td>
                                             <td><?php print $row['o_price']; ?></td>
                                             <td><?php print $row['price']; ?></td>
