@@ -29,10 +29,12 @@
                                     <tbody>
                                         <?php
                                         foreach($products as $row){
-                                          if($row['picture']==''){
+                                          $pics=json_decode($row['picture'],true);
+                                          $pic_path=INC_PATH.$pics[0];
+                                          //print $pic_path;
+                                          if($row['picture']==''||!file_exists($pic_path)){
                                             $img_dsp='<img src="./images/no_pic.jpg" height="64">';
                                           }else{
-                                            $pics=json_decode($row['picture'],true);
                                             //print_r($pics);
                                             $img_dsp='<img src="'.$pics[0].'" height="64">';
                                           }
@@ -213,7 +215,7 @@
     .rows('.selected')
     .remove()
     .draw();
-        swal(\"Deleted!\", \"Your imaginary file has been deleted.\", \"success\");
+        swal(\"สำเร็จ!\", \"ข้อมูลสินค้าถูกลบแล้ว.\", \"success\");
       });
      }
         </script>");

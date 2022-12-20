@@ -34,11 +34,7 @@ $input=array(
         'id'=>'supplier',
         'type'=>'select',
         'label'=>'ตัวแทนจำหน่าย',
-        'item'=>array(
-            '1'=>'ไม่ระบุ',
-            '2'=>'7-11',
-            '3'=>'Big-C',
-        ),
+        'item'=>$supliers,
         'required'=>true,
         'def'=>empty($supplier)?'':$supplier,
     ),

@@ -3,6 +3,10 @@ ob_start();
 session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
+
+define('INC_PATH', str_replace('\\', '/', dirname(__FILE__)) . '/');
+define('BASE_PATH', dirname(INC_PATH) . '/');
+
 error_reporting(E_ALL);
     require_once('../connect.php');
     require_once('function.php');

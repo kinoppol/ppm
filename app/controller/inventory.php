@@ -4,12 +4,17 @@ class inventory{
     }
     function supplier(){
         
-
-        $data['content']='ตัวแทนจำหน่าย';
+        $data=array();
+        $data['title']='รายการตัวแทนจำหน่าย';
+        $product=model('suplier');
+        $supliers=$product->get_suplier(array('store_id'=>$_SESSION['user']['store_id']));
+        $data['content']=view('suplier/list',array('supliers'=>$supliers));
         return view('template/main',$data);
     }
     function product(){
+        
         $data=array();
+        $data['title']='รายการสินค้า';
 
         $product=model('product');
         $products=$product->get_product(array('store_id'=>$_SESSION['user']['store_id']));
@@ -17,7 +22,17 @@ class inventory{
         return view('template/main',$data);
     }
     function form_product(){
+        $data=array();
+        $data['title']='ข้อมูลสินค้า';
         $result=array();
+        $suplier=model('suplier');
+        $supliers=$suplier->get_suplier(array('store_id'=>$_SESSION['user']['store_id']));
+        //print_r( $supliers);
+        $spl=array('0'=>'ไม่ระบุ');
+        foreach($supliers as $row){
+            $spl[$row['suplier_id']]=$row['suplier_name'];
+        }
+        //print_r($spl);
         if(!empty($_GET['product_id'])){
             $product=model('product');
             $product_data=array('product_id'=>$_GET['product_id'],'store_id'=>$_SESSION['user']['store_id']);
@@ -30,7 +45,7 @@ class inventory{
             }
             $result['action']=site_url('inventory/add_product');
         }
-        $data=array();
+        $result['supliers']=$spl;
         $data['content']=view('product/form_product',$result);
         if(!empty($result['picture'])&&$result['picture']!=''){
             $data['content'].=view('product/gallery',array('pictures'=>json_decode($result['picture'],true)));
