@@ -56,7 +56,7 @@ if(empty($_COOKIE['menu_display'])||$_COOKIE['menu_display']=='expand'){
 }
 
 ?>
-<body class="<?php print $body_calss; ?>">
+<body class="<?php print $body_calss; ?>" id="ENQUIRY_VIEWMETER">
     <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
@@ -297,6 +297,24 @@ if(empty($_COOKIE['menu_display'])||$_COOKIE['menu_display']=='expand'){
             jQuery.ajax("<?php print site_url('setting/toggleMenu'); ?>");
         });
     }
+    jQuery("#ENQUIRY_VIEWMETER").keydown(function(event) {
+    if(event.which == 113) { //F2
+        //alert('F2');
+        var url = "?p=sale/pos";
+        //return false;
+    }
+    else if(event.which == 114) { //F3
+        //alert('F3');
+        var url = "?p=sale_report/daily";
+        //return false;
+    }
+    else if(event.which == 115) { 
+        var url = "?p=inventory/product";
+    }
+    jQuery(location).attr('href',url);
+    return false;
+
+});
 </script>
     <?php
         print systemFoot();
