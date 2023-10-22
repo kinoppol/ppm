@@ -298,21 +298,21 @@ if(empty($_COOKIE['menu_display'])||$_COOKIE['menu_display']=='expand'){
         });
     }
     jQuery("#ENQUIRY_VIEWMETER").keydown(function(event) {
+        var url='';
     if(event.which == 113) { //F2
-        //alert('F2');
-        var url = "?p=sale/pos";
-        //return false;
+        url = "?p=sale/pos";
     }
     else if(event.which == 114) { //F3
-        //alert('F3');
-        var url = "?p=sale_report/daily";
-        //return false;
+        url = "?p=sale_report/daily";
     }
     else if(event.which == 115) { 
-        var url = "?p=inventory/product";
+        url = "?p=inventory/product";
     }
-    jQuery(location).attr('href',url);
-    return false;
+    if(url!='') {
+        jQuery(location).attr('href',url);
+        return false;
+    }
+    
 
 });
 </script>

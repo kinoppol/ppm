@@ -4,7 +4,7 @@ class sale{
     }
     function pos(){
 
-        $data['content']='POS';
+        $data['content']=view('sale/pos');
         return view('template/main',$data);
     }
     function daily_report(){
