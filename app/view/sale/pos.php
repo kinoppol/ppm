@@ -4,7 +4,7 @@
                     <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <strong class="card-title">การขาย/ผู้ซื้อ</strong>
+                                    <strong class="card-title">การขาย</strong>
                                 </div>
                                 <div class="card-body">
                                  <div class="col-md-12 col-lg-12">
@@ -20,12 +20,7 @@
                                                                     </div>
                                                                 </div>
 </div>
-                            </div>
-                            
-                            <div class="card">
-                                <div class="card-header bg-success d-flex justify-content-between align-items-center">
-                                    <strong class="card-title">รายการสินค้า</strong>
-                                </div>
+                    
                                 <div class="card-body">
                                  <div class="col-md-12 col-lg-12">
 </div>
@@ -33,7 +28,7 @@
 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>รหัสสินค้า</th>
+                                            <th>#</th>
                                             <th>รายการ</th>
                                             <th>จำนวน</th>
                                             <th>ราคา</th>
