@@ -3,13 +3,83 @@ class sale{
     function index(){
     }
     function pos(){
-
-        $data['content']=view('sale/pos');
+        $order=model('order');
+        $total=0;
+        $last_price=0;
+        if(!isset($_SESSION['inv_no'])||empty($_SESSION['inv_no'])){    
+            $_SESSION['inv_no']='RS-'.$_SESSION['user']['store_id'].time();
+            $product_list=array();
+        }else{
+            $inv_data=array('invoice'=>$_SESSION['inv_no'],'store_id'=>$_SESSION['user']['store_id']);
+            $product_list=$order->get_item($inv_data);
+            $last_item=0;
+            foreach($product_list as $pd){
+                $total+=$pd['qty']*$pd['price'];
+                if(strtotime($pd['date'])>$last_item){
+                    $last_item=strtotime($pd['date']);
+                    $last_price=$pd['price'];
+                }
+            }
+        }
+        $data=array(
+            'total'=>$total,
+            'last_price'=>$last_price,
+            'inv_no'=>$_SESSION['inv_no'],
+            'store_id'=>$_SESSION['user']['store_id'],
+            'item_list'=>view('sale/item_list',array('product_list'=>$product_list)),
+        );
+        $data['content']=view('sale/pos',$data);
         return view('template/main',$data);
     }
     function daily_report(){
 
         $data['content']='Dialy Report.';
         return view('template/main',$data);
+    }
+
+    function check_products(){
+        $product=model('product');
+        $order=model('order');
+        //print_r($_POST);
+        $data=array(
+            'store_id'=>$_POST['store_id'],
+            'product_code'=>$_POST['barcode'],
+        );
+        $product_data=$product->get_product($data);
+        //print_r($product_data);
+        if(count($product_data)==0){
+            $_SESSION['POS_ERROR']="ไม่พบสินค้า";
+            return redirect(site_url('sale/pos'));
+        }else{
+            $product_data=$product_data[0];
+
+            $data=array(
+            'store_id'=>$_POST['store_id'],
+            'product_code'=>$_POST['barcode'],
+            'invoice'=>$_POST['inv_no'],
+            );
+            $check_order=$order->get_item($data);
+            if(count($check_order)==0){
+                $item_data=array(
+                'store_id'=>$_POST['store_id'],
+                'product_code'=>$_POST['barcode'],
+                'qty'=>1,
+                'invoice'=>$_POST['inv_no'],
+                'product'=>$product_data['product_id'],
+                'gen_name'=>$product_data['gen_name'],
+                'name'=>$product_data['product_name'],
+                'price'=>$product_data['price'],
+                'date'=>(date('Y-m-d H:i:s')),
+                );
+                $order->add_item($item_data);
+            }else{
+                $item_data=$check_order[0];
+                $where=array(
+                    'transaction_id'=>$item_data['transaction_id'],
+                );
+                $order->update_item(array('qty'=>$item_data['qty']+1),$where);
+            }
+        }
+        return redirect(site_url('sale/pos'));
     }
 }

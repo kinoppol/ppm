@@ -4,7 +4,7 @@
                     <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <strong class="card-title">การขาย</strong>
+                                    <strong class="card-title">การขาย #<?php print $inv_no; ?></strong>
                                 </div>
                                 <div class="card-body">
                                  <div class="col-md-12 col-lg-12">
@@ -12,10 +12,16 @@
 
 <div class="row form-group">
                                                                     <div class="col col-md-12">
-                                                                        <div class="input-group">
-                                                                            <input type="text" id="barcode" name="ิbarcode" 
-                                                                            placeholder="บาร์โค๊ด/ชื่อสินค้า" class="form-control">
-                                                                            <div class="input-group-btn"><button class="btn btn-primary">ตกลง</button></div>
+                                                                    <form id="pos_scan" action="<?php print site_url('sale/check_products'); ?>" method="post"><div class="input-group">
+<input type='hidden' name="store_id" value="<?php print $store_id; ?>">
+<input type='hidden' name="inv_no" value="<?php print $inv_no; ?>">
+                                                                            <input type="text" id="barcode" name="barcode" 
+                                                                            placeholder="บาร์โค๊ด/ชื่อสินค้า" class="form-control"
+                                                                            value=""
+                                                                            >
+                                                                            <div class="input-group-btn"><button class="btn btn-primary">ตกลง</button>
+                                                                        </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -24,21 +30,9 @@
                                 <div class="card-body">
                                  <div class="col-md-12 col-lg-12">
 </div>
-
-<table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>รายการ</th>
-                                            <th>จำนวน</th>
-                                            <th>ราคา</th>
-                                            <th>ส่วนลด</th>
-                                            <th>รวมเงิน</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-</table>
+<?php
+    print $item_list;
+?>
 </div>
                             </div>
                     </div>
@@ -55,7 +49,7 @@
         <div class="card">
             <div class="p-0 clearfix">
                 <i class="fa fa-usd bg-success p-4 font-2xl mr-3 float-left text-light"></i>
-                <div class="h5 text-primary mb-0 pt-3">$1.999,50</div>
+                <div class="h5 text-primary mb-0 pt-3"><?php print number_format($last_price,2); ?></div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs small">สินค้าล่าสุด</div>
             </div>
         </div>
@@ -64,7 +58,7 @@
         <div class="card">
             <div class="p-0 clearfix">
                 <i class="fa fa-usd bg-danger p-4 font-2xl mr-3 float-left text-light"></i>
-                <div class="h5 text-primary mb-0 pt-3">$1.999,50</div>
+                <div class="h5 text-primary mb-0 pt-3"><?php print number_format($total,2); ?></div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs small">ราคารวม</div>
             </div>
         </div>
@@ -87,6 +81,13 @@
             </div>
 </div>
 <?php
+if(!empty($_SESSION['POS_ERROR'])){
+    //print $_SESSION['POS_ERROR'];
+    systemFoot("<script>
+        alert('".$_SESSION['POS_ERROR']."');
+        </script>");
+        unset($_SESSION['POS_ERROR']);
+}
         systemFoot("
         <script>
         jQuery(document).ready(function(){
