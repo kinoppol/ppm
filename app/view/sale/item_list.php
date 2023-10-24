@@ -12,7 +12,6 @@ input[type='number']{
                                             <th>รายการ</th>
                                             <th>จำนวน</th>
                                             <th>ราคา</th>
-                                            <th>ส่วนลด</th>
                                             <th>รวมเงิน</th>
                                         </tr>
                                     </thead>
@@ -24,7 +23,6 @@ input[type='number']{
                                             <td>'.$pd['name'].'</td>
                                             <td><input type="number" min="1" id="qty_'.$pd['transaction_id'].'" value="'.$pd['qty'].'" clase="from-control" size="3"></td>
                                             <td>'.$pd['price'].'</td>
-                                            <td>'.$pd['discount'].'</td>
                                             <td>'.($pd['price']*$pd['qty']).'</td>
                                             </tr>';
                                         }
