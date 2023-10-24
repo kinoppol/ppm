@@ -71,9 +71,9 @@
                                 </div>
                                 
                             <div class="card-body">
-                            <button type="button" class="btn btn-success btn-lg btn-block">รับเงิน (F10)</button>
-                                        <button type="button" class="btn btn-warning btn-lg btn-block">พักการขาย (F11)</button>
-                                        <button type="button" class="btn btn-danger btn-lg btn-block">ยกเลิกการขาย</button>
+                            <button type="button" class="btn btn-success btn-lg btn-block" onclick="sale_end()">รับเงิน (F10)</button>
+                                        <button type="button" class="btn btn-warning btn-lg btn-block" onclick="sale_hold()">พักการขาย (F9)</button>
+                                        <button type="button" class="btn btn-danger btn-lg btn-block" onclick="sale_cancel()">ยกเลิกการขาย</button>
 </div>
                     </div>
                 </div>
@@ -131,13 +131,31 @@ if(!empty($_SESSION['POS_ERROR'])){
           });
           jQuery(\"#ENQUIRY_VIEWMETER\").keydown(function(event) {
             if(event.which == 121) { //F10
-                alert('END Sale.');
+                //alert('END Sale.');
+                sale_end()
                 return false;
             }
-            if(event.which == 122) { //F11
-                alert('Hold Sale.');
+            if(event.which == 120) { //F9
+                //alert('Hold Sale.');
+                sale_hold();
                 return false;
             }
         });
+        function sale_hold(){
+            if(confirm('พักการขาย ". $inv_no." ?')){    
+                var url='".site_url('sale/hold/inv/'.$inv_no)."';                
+                jQuery(location).attr('href',url);
+            }
+        }
+        function sale_end(){    
+                var url='".site_url('sale/end/inv/'.$inv_no)."';                
+                jQuery(location).attr('href',url);
+        }
+        function sale_cancel(){
+            if(confirm('ยกเลิกการขาย ". $inv_no." ?')){    
+                var url='".site_url('sale/cancel/inv/'.$inv_no)."';                
+                jQuery(location).attr('href',url);
+            }
+        }
         </script>");
     ?>

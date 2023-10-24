@@ -6,19 +6,22 @@ class sale{
         $order=model('order');
         $total=0;
         $last_price=0;
+        if(!empty($_SESSION['last_price'])){
+            $last_price=$_SESSION['last_price'];
+        }
         if(!isset($_SESSION['inv_no'])||empty($_SESSION['inv_no'])){    
             $_SESSION['inv_no']='RS-'.$_SESSION['user']['store_id'].time();
             $product_list=array();
         }else{
             $inv_data=array('invoice'=>$_SESSION['inv_no'],'store_id'=>$_SESSION['user']['store_id']);
             $product_list=$order->get_item($inv_data);
-            $last_item=0;
+            //$last_item=0;
             foreach($product_list as $pd){
                 $total+=$pd['qty']*$pd['price'];
-                if(strtotime($pd['date'])>$last_item){
+                /*if(strtotime($pd['date'])>$last_item){
                     $last_item=strtotime($pd['date']);
                     $last_price=$pd['price'];
-                }
+                }*/
             }
         }
         $data=array(
@@ -52,7 +55,7 @@ class sale{
             return redirect(site_url('sale/pos'));
         }else{
             $product_data=$product_data[0];
-
+            $_SESSION['last_price']=$product_data['price'];
             $data=array(
             'store_id'=>$_POST['store_id'],
             'product_code'=>$_POST['barcode'],
@@ -82,4 +85,28 @@ class sale{
         }
         return redirect(site_url('sale/pos'));
     }
+    function update(){
+        global $hGET;
+        print_r($hGET);
+        if(!empty($hGET['tid'])&&!empty($hGET['qty'])){
+            $order=model('order');
+            $where=array(
+                'transaction_id'=>$hGET['tid'],
+            );
+            $order->update_item(array('qty'=>$hGET['qty']),$where);
+        }
+        return redirect(site_url('sale/pos'));
+    }
+    function hold(){
+        global $hGET;
+        print_r($hGET);
+     }
+     function end(){
+        global $hGET;
+        print_r($hGET);
+     }
+     function cancel(){
+        global $hGET;
+        print_r($hGET);
+     }
 }
