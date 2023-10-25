@@ -1,16 +1,16 @@
 
 <div class="col-md-8">
 <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-center bg-info">
-                                    <strong class="card-title">สรุปรายการ</strong>
+                                <div class="card-header d-flex justify-content-between align-items-center bg-primary">
+                                    <strong class="card-title text-light">สรุปรายการ</strong>
                                 </div>
                                 
                             <div class="card-body">
 
 
 <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <strong class="card-title">ข้อมูลผู้ซื้อ</strong>
+    <div class="card-header d-flex justify-content-between align-items-center bg-info">
+        <strong class="card-title text-light">ข้อมูลผู้ซื้อ</strong>
     </div>
     <div class="card-body">
         <div class="col-md-12 col-lg-12">
@@ -34,8 +34,8 @@
                                                                     </div>
                                                                     </div>
     <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <strong class="card-title">สรุปรายการ #<?php print $inv_no; ?></strong>
+        <div class="card-header d-flex justify-content-between align-items-center bg-success">
+            <strong class="card-title text-light">สรุปรายการ #<?php print $inv_no; ?></strong>
         </div>
         <div class="card-body">
             <div class="col-md-12 col-lg-12">
@@ -55,7 +55,7 @@ print $content;
     <div class="col-md-4">
 <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center bg-warning">
-                                    <strong class="card-title">ชำระเงิน</strong>
+                                    <strong class="card-title text-light">ชำระเงิน</strong>
                                 </div>
                                 
                             <div class="card-body">
