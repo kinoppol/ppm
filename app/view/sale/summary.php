@@ -1,8 +1,8 @@
 
 <div class="col-md-8">
 <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-center bg-primary">
-                                    <strong class="card-title text-light">สรุปรายการ</strong>
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <strong class="card-title">สรุปรายการ</strong>
                                 </div>
                                 
                             <div class="card-body">
