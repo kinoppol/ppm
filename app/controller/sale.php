@@ -29,7 +29,7 @@ class sale{
             'last_price'=>$last_price,
             'inv_no'=>$_SESSION['inv_no'],
             'store_id'=>$_SESSION['user']['store_id'],
-            'item_list'=>view('sale/item_list',array('product_list'=>$product_list)),
+            'item_list'=>view('sale/item_list',array('product_list'=>$product_list,'editable'=>true)),
         );
         $data['content']=view('sale/pos',$data);
         return view('template/main',$data);
@@ -103,7 +103,14 @@ class sale{
      }
      function end(){
         global $hGET;
-        print_r($hGET);
+        $order=model('order');
+        //print_r($hGET);
+        $inv_data=array('invoice'=>$hGET['inv'],'store_id'=>$_SESSION['user']['store_id']);
+        $product_list=$order->get_item($inv_data);
+        $data['inv_no']=$hGET['inv'];
+        $data['content']=view('sale/item_list',array('product_list'=>$product_list));
+        $data['content']=view('sale/summary',$data);
+        return view('template/main',$data);
      }
      function cancel(){
         global $hGET;

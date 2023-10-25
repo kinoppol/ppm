@@ -71,7 +71,7 @@
                                 </div>
                                 
                             <div class="card-body">
-                            <button type="button" class="btn btn-success btn-lg btn-block" onclick="sale_end()">รับเงิน (F10)</button>
+                            <button type="button" class="btn btn-success btn-lg btn-block" onclick="sale_end()">สรุปการขาย (F10)</button>
                                         <button type="button" class="btn btn-warning btn-lg btn-block" onclick="sale_hold()">พักการขาย (F9)</button>
                                         <button type="button" class="btn btn-danger btn-lg btn-block" onclick="sale_cancel()">ยกเลิกการขาย</button>
 </div>
