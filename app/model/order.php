@@ -27,6 +27,14 @@ class order{
                 $res[]=$row;
             }
             return $res;
+    }
+
+    function get_total($data=array()){
+        $sql='select sum(amount) as total from sales_order where '.arr2and($data);
+        //print $sql;
+        $result=$this->db->query($sql);
+        $ret=$result->fetch_assoc();
+            return $ret['total'];
         
     }
     

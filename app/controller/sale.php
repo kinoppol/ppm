@@ -15,14 +15,15 @@ class sale{
         }else{
             $inv_data=array('invoice'=>$_SESSION['inv_no'],'store_id'=>$_SESSION['user']['store_id']);
             $product_list=$order->get_item($inv_data);
+            $total=$order->get_total($inv_data);
             //$last_item=0;
-            foreach($product_list as $pd){
-                $total+=$pd['qty']*$pd['price'];
+            //foreach($product_list as $pd){
+                //$total+=$pd['qty']*$pd['price'];
                 /*if(strtotime($pd['date'])>$last_item){
                     $last_item=strtotime($pd['date']);
                     $last_price=$pd['price'];
                 }*/
-            }
+            //}
         }
         $data=array(
             'total'=>$total,
@@ -67,6 +68,7 @@ class sale{
                 'store_id'=>$_POST['store_id'],
                 'product_code'=>$_POST['barcode'],
                 'qty'=>1,
+                'amount'=>(1*$product_data['price']),
                 'invoice'=>$_POST['inv_no'],
                 'product'=>$product_data['product_id'],
                 'gen_name'=>$product_data['gen_name'],
@@ -80,7 +82,11 @@ class sale{
                 $where=array(
                     'transaction_id'=>$item_data['transaction_id'],
                 );
-                $order->update_item(array('qty'=>$item_data['qty']+1),$where);
+                $new_data=array(
+                    'qty'=>$item_data['qty']+1,
+                    'amount'=>($item_data['qty']+1)*$item_data['price'],
+                );
+                $order->update_item($new_data,$where);
             }
         }
         return redirect(site_url('sale/pos'));
@@ -107,8 +113,18 @@ class sale{
         //print_r($hGET);
         $inv_data=array('invoice'=>$hGET['inv'],'store_id'=>$_SESSION['user']['store_id']);
         $product_list=$order->get_item($inv_data);
+        $total=$order->get_total($inv_data);
         $data['inv_no']=$hGET['inv'];
         $data['content']=view('sale/item_list',array('product_list'=>$product_list));
+        $pay_data=array(
+            'id'=>'0849555096',
+            'amount'=>$total,
+            'total'=>$total,
+            'discount'=>0,
+            'payment'=>$total,
+        );
+        $data['pay_data']=$pay_data;
+        $data['qr']=view('promtpay/qr',$pay_data);
         $data['content']=view('sale/summary',$data);
         return view('template/main',$data);
      }

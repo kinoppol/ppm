@@ -62,7 +62,7 @@ print $content;
                             <div class="row form-group">
                                                                 <div class="col col-md-6"><label for="text-input" class=" form-control-label">ยอดรวม</label></div>
                                                                 <div class="col-12 col-md-6">
-                                                                    1,254.00
+                                                                    <?php print $pay_data['total']; ?>
                                                                 </div>                                                               
                                                             </div>
                                                             <div class="row form-group">
@@ -72,22 +72,53 @@ print $content;
                                                             <div class="row form-group">
                                                                 <div class="col col-md-6"><label for="text-input" class=" form-control-label">ส่วนลด</label></div>
                                                                 <div class="col-12 col-md-6">
-                                                                    1,254.00
+                                                                <?php print $pay_data['discount']; ?>
                                                                 </div>                                                               
                                                             </div>
                             <div class="row form-group">
                                                                 <div class="col col-md-6"><label for="text-input" class=" form-control-label">ยอดที่ต้องชำระ</label></div>
                                                                 <div class="col-12 col-md-6">
-                                                                    1,254.00
+                                                                <?php print $pay_data['payment']; ?>
                                                                 </div>                                                               
                                                             </div>
-                                                            <button type="button" class="btn btn-success btn-lg btn-block" onclick="sale_end()">ชำระด้วยเงินสด</button>
-                                                            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="sale_end()">ชำระด้วยการโอนเงิน</button>
+                                                            <?php
+                                                            helper('modal');
+                                                            $data=array(
+                                                                'hookId'=>'modalCash',
+                                                                'pay_data'=>$pay_data,
+                                                            );
+                                                            $formCash=view('sale/form/cash',$data);
+                                                            $modalCash=new modal('modalCash','ชำระด้วยเงินสด',$formCash);
+                                                            ?>
+                                                            <button type="button" class="btn btn-success btn-lg btn-block" <?php
+                                                            print $modalCash->button_ref();
+                                                            ?>>ชำระด้วยเงินสด</button>
+                                                            <?php
+                                                            $data=array(
+                                                                'hookId'=>'modalQR',
+                                                                'pay_data'=>$pay_data,
+                                                                'qr'=>$qr,
+                                                            );
+                                                            $formQR=view('sale/form/qr',$data);
+                                                            $modalQR=new modal('modalQR','ชำระด้วยการโอน',$formQR);
+                                                            ?>
+                                                            <button type="button" class="btn btn-primary btn-lg btn-block" <?php
+                                                            print $modalQR->button_ref();
+                                                            ?>>ชำระด้วยการโอนเงิน</button>
                             <button type="button" class="btn btn-success btn-lg btn-block" onclick="sale_end()">พิมพ์ใบเสร็จ (F10)</button>
-                                        <button type="button" class="btn btn-warning btn-lg btn-block" onclick="sale_hold()">แก้ไขข้อมูล (F9)</button>
-                                        <img width="100%" src="https://promptpay.io/0849555096/300.png">
+                                        <button type="button" class="btn btn-warning btn-lg btn-block" onclick="pos()">แก้ไขข้อมูล (F2)</button>
 </div>
                     </div>
                 </div>
+<?php
+print $modalCash->box();
+print $modalQR->box();
+
+    systemFoot("<script>
+    function pos(){
+        var url='".site_url('sale/pos')."';                
+        jQuery(location).attr('href',url);
+    }
+    </script>");
 
 
