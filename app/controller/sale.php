@@ -117,7 +117,7 @@ class sale{
         $data['inv_no']=$hGET['inv'];
         $data['content']=view('sale/item_list',array('product_list'=>$product_list));
         $pay_data=array(
-            'id'=>'0849555096',
+            'id'=>'0632612572',
             'amount'=>$total,
             'total'=>$total,
             'discount'=>0,
