@@ -132,4 +132,23 @@ class sale{
         global $hGET;
         print_r($hGET);
      }
+     
+     function slip(){
+        global $hGET;
+        $total=150;
+        $pay_data=array(
+            'id'=>'0632612572',
+            'amount'=>$total,
+            'total'=>$total,
+            'discount'=>0,
+            'payment'=>$total,
+        );
+        $data=array(
+            'inv'=>$hGET['inv'],
+        );
+        $ret=view('sale/slip/s58',$data);
+        $ret.='<body onload="window.print();setTimeout(window.close, 0);"> ';
+        //print_r($hGET);
+        return $ret;
+     }
 }

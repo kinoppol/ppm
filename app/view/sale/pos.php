@@ -148,6 +148,7 @@ if(!empty($_SESSION['POS_ERROR'])){
             }
         }
         function sale_end(){    
+                
                 var url='".site_url('sale/end/inv/'.$inv_no)."';                
                 jQuery(location).attr('href',url);
         }
