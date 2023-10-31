@@ -2,7 +2,7 @@
 <div style="width: 100%; height: 50px;" >
 	<div style="width: 100%; float: left;">
 <div style="text-align:center">
-<h2>Wind Mill</h2>
+<h2>Windmill</h2>
 สาขาวิทยาลัยเกษตรและเทคโนโลยีร้อยเอ็ด</br>
 เลขที่ 235 หมู่ 4 ต. นิเวศน์<br> 
 อ. ธวัชบุรี จ. ร้อยเอ็ด 
