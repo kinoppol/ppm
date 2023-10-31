@@ -135,7 +135,10 @@ class sale{
      
      function slip(){
         global $hGET;
-        $total=150;
+        $order=model('order');
+        $inv_data=array('invoice'=>$hGET['inv'],'store_id'=>$_SESSION['user']['store_id']);
+        $product_list=$order->get_item($inv_data);
+        $total=$order->get_total($inv_data);
         $pay_data=array(
             'id'=>'0632612572',
             'amount'=>$total,
@@ -145,6 +148,8 @@ class sale{
         );
         $data=array(
             'inv'=>$hGET['inv'],
+            'total'=>$total,
+            'product_list'=>$product_list,
         );
         $ret=view('sale/slip/s58',$data);
         $ret.='<body onload="window.print();setTimeout(window.close, 0);"> ';
