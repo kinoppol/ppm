@@ -13,6 +13,7 @@
     </div>
     <div class="col-12 col-md-8">                                                                       
         <input type="number" value="" min="<?php print $pay_data['total']; ?>" name="cash" id="cash" required>
+        <input type="hidden" name="cash_received" id="cash_received">
     </div>                                                               
 </div>
 <div class="row form-group">
@@ -56,6 +57,7 @@ jQuery( "#cash" ).on(\'change\', function(){
 });
 function updChange(){
     payment=jQuery("#cash").val();
+    jQuery("#cash_received").val(payment);
     change=payment-total;
     jQuery( "#change" ).text(change.toFixed(2));
 }

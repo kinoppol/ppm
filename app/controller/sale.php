@@ -130,7 +130,24 @@ class sale{
         return view('template/main',$data);
      }
      function end_record(){
-        print_r($_POST);
+        global $hGET;
+        $order=model('order');
+        $inv_data=array('invoice'=>$hGET['inv'],'store_id'=>$_SESSION['user']['store_id']);
+        $total=$order->get_total($inv_data);
+        $data=array(
+            'store_id'=>$_SESSION['user']['store_id'],
+            'cashier'=>$_SESSION['user']['id'],
+            'invoice_number'=>$hGET['inv'],
+            'date'=>date('Y-m-d H:i:s'),
+            'type'=>'cash',
+            'amount'=>$total,
+            'paid_amount'=>$_POST['cash_received'],
+            'change_amount'=>$_POST['cash_received']-$total,
+            'name'=>'walkin',
+        );
+        $order->sale_record($data);
+        unset($_SESSION['inv_no']);
+        return redirect(site_url('sale/pos'));
      }
      function cancel(){
         global $hGET;

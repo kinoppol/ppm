@@ -44,4 +44,11 @@ class order{
         $result=$this->db->query($sql);
         return $result;        
     }
+
+    function sale_record($data=array()){
+        $sql='insert into sales set '.arr2set($data);        
+        //print $sql;
+        $result=$this->db->query($sql);
+        return $result;    
+    }
 }
