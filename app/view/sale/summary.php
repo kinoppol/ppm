@@ -105,7 +105,7 @@ print $content;
                                                             <button type="button" class="btn btn-primary btn-lg btn-block" <?php
                                                             print $modalQR->button_ref();
                                                             ?>>ชำระด้วยการโอนเงิน</button>
-                            <button type="button" class="btn btn-success btn-lg btn-block" onclick="print_slipt()">พิมพ์ใบเสร็จ (F10)</button>
+                            <button type="button" class="btn btn-success btn-lg btn-block" onclick="print_order_slipt()">พิมพ์ใบคำสั่งซื้อ (F10)</button>
                                         <button type="button" class="btn btn-warning btn-lg btn-block" onclick="pos()">แก้ไขข้อมูล (F2)</button>
 </div>
                     </div>
@@ -119,8 +119,8 @@ print $modalQR->box();
         var url='".site_url('sale/pos')."';                
         jQuery(location).attr('href',url);
     }
-    function print_slipt(){
-            var url = '".site_url('sale/slip/inv/'.$inv_no)."';
+    function print_order_slipt(){
+            var url = '".site_url('sale/order_slip/inv/'.$inv_no)."';
             var thePopup = window.open( url, \"Member Listing\", \"menubar=0,location=0,height=700,width=900\" );
             thePopup.print();
     }

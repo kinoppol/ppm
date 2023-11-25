@@ -19,24 +19,23 @@
 <?php print $inv; ?><br>
 <br>
 <hr>
-<table>
+<table width="100%">
 	<thead>
 		<tr>
+			<th width="70%">รายการ</th>
 			<th width="10%">Qty</th>
-			<th width="50%">รายการ</th>
-			<th width="20%">&nbsp;</th>
-			<th width="20%">ราคา</th>
+			<th width="20%">ราคารวม</th>
 		<tr>
 	</thead>
 	<tbody>
 <?php
+$sumQty=0;
 	foreach($product_list as $pd){
+		$sumQty+=$pd['qty'];
 		print "<tr><td>".
-			  $pd['qty'].
-			  "</td><td>".
 			  $pd['name'].
-			  "</td><td>".
-			  ($pd['qty']==1?"":"@".number_format($pd['price'],2)).
+			  "</td><td align='center'>".
+			  $pd['qty'].
 			  "</td><td align='right'>".
 			  number_format($pd['amount'],2).
 			  "</td><tr>";
@@ -44,16 +43,17 @@
 ?>
 <tr>
 	<td>&nbsp;</td>
-	<td>รวม</td>
 	<td>&nbsp;</td>
-	<td align='right'><?php print number_format($total,2); ?></td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>ยอดรวม</td>
+	<td align='center'><?php print $sumQty; ?></td>
+	<td align='right'><?php print number_format($total??0,2); ?></td>
 </tr>
 </tbody>
 </table>
 <hr>
-<br>
-ประเภทการชำระ QR
-<br>
 </div>
 </div>
 </div>

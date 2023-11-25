@@ -129,6 +129,19 @@ class sale{
         $data['content']=view('sale/summary',$data);
         return view('template/main',$data);
      }
+     
+     function detail(){
+        global $hGET;
+        $order=model('order');
+        //print_r($hGET);
+        $inv_data=array('invoice'=>$hGET['inv'],'store_id'=>$_SESSION['user']['store_id']);
+        $product_list=$order->get_item($inv_data);
+        $total=$order->get_total($inv_data);
+        $data['inv_no']=$hGET['inv'];
+        $data['content']=view('sale/item_list',array('product_list'=>$product_list));
+        $data['content']=view('sale/detail',$data);
+        return view('template/main',$data);
+     }
      function end_record(){
         global $hGET;
         $order=model('order');
@@ -146,8 +159,9 @@ class sale{
             'name'=>'walkin',
         );
         $order->sale_record($data);
+        $redirect_url='sale/detail/inv/'.$_SESSION['inv_no'];
         unset($_SESSION['inv_no']);
-        return redirect(site_url('sale/pos'));
+        return redirect(site_url($redirect_url));
      }
      function cancel(){
         global $hGET;
@@ -174,6 +188,33 @@ class sale{
         );
         $ret=view('sale/slip/s58',$data);
         $ret.='<body onload="window.print();setTimeout(window.close, 0);"> ';
+        //print_r($hGET);
+        return $ret;
+     }
+
+     function order_slip(){
+        global $hGET;
+        $order=model('order');
+        $inv_data=array('invoice'=>$hGET['inv'],'store_id'=>$_SESSION['user']['store_id']);
+        $product_list=$order->get_item($inv_data);
+        $total=$order->get_total($inv_data);
+        $pay_data=array(
+            'id'=>'0632612572',
+            'amount'=>$total,
+            'total'=>$total,
+            'discount'=>0,
+            'payment'=>$total,
+            'qr_width'=>100,
+        );
+        $data=array(
+            'inv'=>$hGET['inv'],
+            'total'=>$total,
+            'product_list'=>$product_list,
+        );
+        $ret='<div align="center">ใบสั่งซื้อ</div>';
+        $ret.=view('sale/slip/s58',$data);
+        $ret.='<div align="center">Qr-Code ชำระเงินผ่าน Promtpay'.view('promtpay/qr',$pay_data).'</div>';
+        //$ret.='<body onload="window.print();setTimeout(window.close, 0);"> ';
         //print_r($hGET);
         return $ret;
      }
