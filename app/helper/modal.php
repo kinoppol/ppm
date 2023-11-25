@@ -9,13 +9,13 @@ class modal{
         $this->id=$id;
         if(!empty($title))$this->title=$title;
         if(!empty($body))$this->body=$body;
-        if(!empty($callBack))$this->$confirmCallback=$callBack;
+        if(!empty($callBack))$this->confirmCallback=$callBack;
     }
 
     function box(){
         $callBack='';
         if (!empty($this->confirmCallback)){
-            $callBack='onClick="'.$this->confirmCallback.'"';
+            $callBack='onClick="'.$this->confirmCallback.'()"';
         }
         $ret='<div class="modal fade" id="'.$this->id.'" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">

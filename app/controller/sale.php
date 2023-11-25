@@ -117,6 +117,7 @@ class sale{
         $data['inv_no']=$hGET['inv'];
         $data['content']=view('sale/item_list',array('product_list'=>$product_list));
         $pay_data=array(
+            'inv_no'=>$data['inv_no'],
             'id'=>'0632612572',
             'amount'=>$total,
             'total'=>$total,
@@ -127,6 +128,9 @@ class sale{
         $data['qr']=view('promtpay/qr',$pay_data);
         $data['content']=view('sale/summary',$data);
         return view('template/main',$data);
+     }
+     function end_record(){
+        print_r($_POST);
      }
      function cancel(){
         global $hGET;

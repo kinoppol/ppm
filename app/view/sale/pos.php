@@ -49,7 +49,7 @@
         <div class="card">
             <div class="p-0 clearfix">
                 <i class="fa fa-usd bg-success p-4 font-2xl mr-3 float-left text-light"></i>
-                <div class="h5 text-primary mb-0 pt-3"><?php print number_format($last_price,2); ?></div>
+                <div class="h5 text-primary mb-0 pt-3"><?php print number_format($last_price??0,2); ?></div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs small">สินค้าล่าสุด</div>
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="card">
             <div class="p-0 clearfix">
                 <i class="fa fa-usd bg-danger p-4 font-2xl mr-3 float-left text-light"></i>
-                <div class="h5 text-primary mb-0 pt-3"><?php print number_format($total,2); ?></div>
+                <div class="h5 text-primary mb-0 pt-3"><?php print number_format($total??0,2); ?></div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs small">ราคารวม</div>
             </div>
         </div>

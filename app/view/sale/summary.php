@@ -88,7 +88,7 @@ print $content;
                                                                 'pay_data'=>$pay_data,
                                                             );
                                                             $formCash=view('sale/form/cash',$data);
-                                                            $modalCash=new modal('modalCash','ชำระด้วยเงินสด',$formCash);
+                                                            $modalCash=new modal('modalCash','ชำระด้วยเงินสด',$formCash,'confirmSaleCash');
                                                             ?>
                                                             <button type="button" class="btn btn-success btn-lg btn-block" <?php
                                                             print $modalCash->button_ref();
@@ -123,6 +123,14 @@ print $modalQR->box();
             var url = '".site_url('sale/slip/inv/'.$inv_no)."';
             var thePopup = window.open( url, \"Member Listing\", \"menubar=0,location=0,height=700,width=900\" );
             thePopup.print();
+    }
+    function confirmSaleCash(){
+        if(jQuery('#cash').val()<total){
+            alert('จำนวนเงินที่รับมาน้อยกว่ายอดชำระ');
+        }else{
+            jQuery('#cfendsale').slideDown();
+            jQuery('#cash').prop( 'disabled', true );
+        }
     }
     </script>");
 
