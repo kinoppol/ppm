@@ -4,7 +4,7 @@
         <label for="text-input" class=" form-control-label">ยอดรวม</label>
     </div>
     <div class="col-12 col-md-8">                                                                       
-        <?php print number_format($pay_data['total']??0,2); ?>
+        <?php print number_format(empty($pay_data['total'])?0:$pay_data['total'],2); ?>
     </div>                                                               
 </div>
 <div class="row form-group">
@@ -12,7 +12,7 @@
         <label for="text-input" class=" form-control-label">รับเงินมา</label>
     </div>
     <div class="col-12 col-md-8">                                                                       
-        <input type="number" value="" min="<?php print $pay_data['total']; ?>" name="cash" id="cash" required>
+        <input type="number" value="" min="<?php print empty($pay_data['total'])?0:$pay_data['total']; ?>" name="cash" id="cash" required>
         <input type="hidden" name="cash_received" id="cash_received">
     </div>                                                               
 </div>
@@ -42,7 +42,7 @@ systemFoot('
 jQuery(function(){
     jQuery("#cfendsale").hide();
 });
-var total='.($pay_data['total']??0).';
+var total='.(empty($pay_data['total'])?0:$pay_data['total']).';
 var payment=0;
 var change=0;
 jQuery( "#'.$hookId.'" ).on(\'shown.bs.modal\', function(){
