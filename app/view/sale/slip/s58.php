@@ -49,7 +49,7 @@ $sumQty=0;
 <tr>
 	<td>ยอดรวม</td>
 	<td align='center'><?php print $sumQty; ?></td>
-	<td align='right'><?php print number_format($total??0,2); ?></td>
+	<td align='right'><?php print number_format(empty($total)?0:$total,2); ?></td>
 </tr>
 </tbody>
 </table>
